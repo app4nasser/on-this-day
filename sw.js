@@ -1,6 +1,6 @@
 // في مثل هذا اليوم — Service Worker للعمل بدون إنترنت
 // عند تعديل أي ملف في التطبيق غيّر رقم الإصدار هنا ليتحدث عند المستخدمين
-const VERSION = 'otd-v1';
+const VERSION = 'otd-v2';
 const APP_CACHE = VERSION + '-app';
 const FONT_CACHE = 'otd-fonts';
 
@@ -14,7 +14,7 @@ const APP_FILES = [
   './icons/apple-touch-icon.png',
   './icons/favicon.png'
 ];
-const FONTS_CSS = 'https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Reem+Kufi:wght@600&family=Tajawal:wght@400;500;700;800&display=swap';
+const FONTS_CSS = 'https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600&family=Tajawal:wght@400;500;700;800&display=swap';
 
 self.addEventListener('install', event => {
   event.waitUntil((async () => {

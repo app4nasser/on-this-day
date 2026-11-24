@@ -15,67 +15,56 @@
 <title>في مثل هذا اليوم</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Aref+Ruqaa:wght@700&family=Reem+Kufi:wght@600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Reem+Kufi:wght@600&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f1e8; --card:#fffdf9; --ink:#1f1b16; --muted:#7c7064; --line:#e6ddd0;
   --accent:#a86b32; --accent-2:#d9a35f; --chip:#efe6d8; --shadow:0 6px 24px rgba(60,40,20,.10);
-  --radius:18px; --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
+  --safe-t:env(safe-area-inset-top,0px); --safe-b:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme: dark){
   :root{ --bg:#14110e; --card:#1e1a16; --ink:#f3ece2; --muted:#a89a8a; --line:#2f2922; --chip:#2a241e; --accent:#e0a868; --accent-2:#b9813f; --shadow:0 6px 24px rgba(0,0,0,.4);}
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;min-height:100%}
 button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 svg{width:22px;height:22px;fill:currentColor;flex:none}
 .hidden{display:none!important}
 
-/* header */
+/* ---- start screens ---- */
+.screen{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:calc(var(--safe-t) + 30px) 28px calc(var(--safe-b) + 30px)}
+.screen .logo{width:112px;height:112px;border-radius:28px;box-shadow:0 12px 30px rgba(120,70,20,.25);margin-bottom:26px}
+.screen h1{font-family:'Reem Kufi','Tajawal',sans-serif;font-weight:600;font-size:30px;margin:0 0 10px}
+.screen p{color:var(--muted);font-size:16px;line-height:1.8;margin:0 0 28px;max-width:340px}
+.pbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:340px;padding:16px 18px;border-radius:18px;background:var(--accent);color:#fff;font-weight:800;font-size:17px;box-shadow:0 8px 20px rgba(168,107,50,.3)}
+.pbtn:active{transform:scale(.98)}
+.pbtn.alt{background:var(--chip);color:var(--ink);box-shadow:none}
+.linkbtn{display:block;margin:16px auto 0;color:var(--muted);font-size:14px;padding:8px}
+.ios-steps{background:var(--card);border-radius:18px;padding:16px 18px;max-width:340px;text-align:start;line-height:2;font-size:15px;box-shadow:var(--shadow)}
+.ios-steps b{color:var(--accent)}
+
+/* ---- main ---- */
 header{position:sticky;top:0;z-index:20;padding:calc(var(--safe-t) + 10px) 16px 10px;
-  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line)}
+  background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .hrow{display:flex;align-items:center;gap:8px;max-width:1100px;margin:auto}
-.brand{flex:1;min-width:0}
-.brand h1{margin:0;font-family:'Reem Kufi','Tajawal',sans-serif;font-weight:600;font-size:22px;letter-spacing:.2px}
-.brand small{color:var(--muted);font-size:13px}
+.brand{flex:1;margin:0;font-family:'Reem Kufi','Tajawal',sans-serif;font-weight:600;font-size:22px}
 .ibtn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--chip)}
 .ibtn:active{transform:scale(.94)}
+main{max-width:1100px;margin:auto;padding:4px 16px calc(40px + var(--safe-b))}
 
-main{max-width:1100px;margin:auto;padding:14px 16px calc(40px + var(--safe-b))}
-
-/* date bar */
-.datebar{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
-.datebar .dd{flex:1;text-align:center;position:relative}
-.dd .kicker{font-size:13px;color:var(--accent);font-weight:700}
+.datebar{display:flex;align-items:center;gap:10px;margin:4px 0 12px}
+.dd{flex:1;text-align:center;position:relative}
+.dd .kicker{font-size:13px;color:var(--accent);font-weight:700;min-height:20px}
 .dd .big{font-family:'Amiri',serif;font-size:30px;line-height:1.3}
 .dd input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}
-.todaybtn{position:relative;z-index:2;font-size:13px;padding:6px 12px;border-radius:99px;background:var(--chip);color:var(--accent);font-weight:700}
+.todaybtn{position:relative;z-index:2;font-size:13px;padding:4px 12px;border-radius:99px;background:var(--chip);color:var(--accent);font-weight:700}
 
-/* month chips */
-.chips-wrap{margin:0 -16px 16px;padding:0 16px}
-.chips-title{font-size:13px;color:var(--muted);margin-bottom:8px}
-.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.chips{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 16px;padding:0 16px 4px;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{flex:none;padding:7px 12px;border-radius:99px;background:var(--chip);font-size:14px;white-space:nowrap}
 .chip b{color:var(--accent);font-weight:800;margin-inline-start:4px}
 .chip.on{background:var(--accent);color:#fff}.chip.on b{color:#fff}
-
-/* hero */
-.hero.tile{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:16/10;background:#2a231c;box-shadow:var(--shadow);margin-bottom:22px;width:100%;display:block;padding:0}
-.hero img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.72))}
-.hero .cap{position:absolute;inset-inline:0;bottom:0;z-index:1;padding:18px 20px;color:#fff;text-align:start}
-.hero .cap .t{font-family:'Amiri',serif;font-size:28px;line-height:1.2}
-.hero .cap .s{opacity:.88;font-size:14px;margin-top:4px}
-@media (min-width:800px){.hero{aspect-ratio:21/8}}
-
-/* year sections */
-.year{margin-bottom:26px}
-.yhead{display:flex;align-items:baseline;gap:10px;margin:0 2px 10px}
-.yhead h2{margin:0;font-size:19px;font-weight:800}
-.yhead .yr{color:var(--accent);font-weight:700}
-.yhead .cnt{margin-inline-start:auto;color:var(--muted);font-size:13px}
 
 .tile{position:relative;display:block;width:100%;padding:0;overflow:hidden;background:var(--chip);border-radius:10px}
 .tile img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s}
@@ -84,40 +73,34 @@ main{max-width:1100px;margin:auto;padding:14px 16px calc(40px + var(--safe-b))}
 .vbadge{position:absolute;bottom:6px;inset-inline-start:6px;background:rgba(0,0,0,.6);color:#fff;border-radius:99px;font-size:12px;padding:2px 8px 2px 6px;display:flex;align-items:center;gap:2px;direction:ltr}
 .vbadge svg{width:14px;height:14px}
 
+.hero.tile{border-radius:24px;aspect-ratio:16/10;background:#2a231c;box-shadow:var(--shadow);margin-bottom:22px}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.7))}
+.hero .cap{position:absolute;inset-inline:0;bottom:0;z-index:1;padding:18px 20px;color:#fff;text-align:start}
+.hero .cap .t{font-family:'Amiri',serif;font-size:28px;line-height:1.2}
+.hero .cap .s{opacity:.9;font-size:14px;margin-top:4px}
+@media (min-width:800px){.hero.tile{aspect-ratio:21/8}}
+
+.year{margin-bottom:26px}
+.yhead{display:flex;align-items:baseline;gap:10px;margin:0 2px 10px}
+.yhead h2{margin:0;font-size:19px;font-weight:800}
+.yhead .yr{color:var(--accent);font-weight:700}
+.yhead .cnt{margin-inline-start:auto;color:var(--muted);font-size:13px}
 .v-grid{display:grid;grid-template-columns:repeat(var(--cols,3),1fr);gap:4px}
 .v-grid .tile{aspect-ratio:1;border-radius:6px}
-
 .v-strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -16px;padding:0 16px 6px;scrollbar-width:none}
 .v-strip::-webkit-scrollbar{display:none}
 .v-strip .tile{flex:none;width:min(62vw,300px);aspect-ratio:3/4;scroll-snap-align:start;border-radius:16px;box-shadow:var(--shadow)}
-
 .v-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr))}
-.card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-.card .tile{border-radius:0;aspect-ratio:4/5}
-.cardbar{display:flex;align-items:center;gap:8px;padding:10px 14px}
-.cardbar .tm{flex:1;color:var(--muted);font-size:14px}
-.sbtn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;background:var(--chip);font-weight:700;font-size:14px;color:var(--accent)}
-.sbtn svg{width:18px;height:18px}
+.v-cards .tile{aspect-ratio:4/5;border-radius:18px;box-shadow:var(--shadow)}
 
-/* empty / onboarding */
-.empty{background:var(--card);border-radius:24px;padding:28px 22px;text-align:center;box-shadow:var(--shadow);margin-top:6px}
-.empty .art{font-family:'Amiri',serif;font-size:34px;color:var(--accent);margin:4px 0 8px}
-.empty p{color:var(--muted);line-height:1.8;margin:6px 0 18px}
-.pbtn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;max-width:380px;margin:10px auto 0;padding:14px 18px;border-radius:16px;background:var(--accent);color:#fff;font-weight:800;font-size:16px}
-.pbtn.alt{background:var(--chip);color:var(--ink)}
-.hint{font-size:13px;color:var(--muted);line-height:1.8;margin-top:16px;text-align:start;background:var(--chip);border-radius:14px;padding:12px 14px}
-.nomem{text-align:center;padding:30px 10px;color:var(--muted)}
+.nomem{text-align:center;padding:40px 10px;color:var(--muted)}
 .nomem .art{font-family:'Amiri',serif;font-size:24px;color:var(--ink);margin-bottom:6px}
 .nomem .row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:14px}
-.stats{color:var(--muted);font-size:13px;text-align:center;margin:-8px 0 16px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 30px}
 
-/* overlays */
+/* ---- viewer ---- */
 .overlay{position:fixed;inset:0;z-index:50}
 #viewer{background:#000;color:#fff;display:flex;flex-direction:column}
-.vtop,.vbot{display:flex;align-items:center;gap:10px;padding:10px 12px;z-index:2}
-.vtop{padding-top:calc(var(--safe-t) + 10px);background:linear-gradient(#000c,#0000)}
-.vbot{padding-bottom:calc(var(--safe-b) + 12px);justify-content:center;background:linear-gradient(#0000,#000c)}
+.vtop{display:flex;align-items:center;gap:10px;padding:calc(var(--safe-t) + 10px) 12px 10px;z-index:2}
 .vtop .vt{flex:1;min-width:0}
 .vtop .vt b{display:block;font-size:16px}.vtop .vt span{font-size:13px;opacity:.75}
 #viewer .ibtn{background:rgba(255,255,255,.14);color:#fff}
@@ -126,34 +109,22 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:10px 0 30px}
 .varrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:grid;place-items:center}
 .varrow.r{right:12px}.varrow.l{left:12px}
 @media (hover:none){.varrow{display:none}}
-.vbtn{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:#fff;min-width:74px}
-.vbtn span.c{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14)}
-.vbtn.main span.c{background:var(--accent-2)}
-.vcount{font-size:13px;opacity:.75;direction:rtl}
+.vbot{display:flex;justify-content:center;padding:12px 12px calc(var(--safe-b) + 18px)}
+.sharebtn{display:flex;align-items:center;gap:10px;padding:14px 34px;border-radius:99px;background:var(--accent-2);color:#fff;font-weight:800;font-size:17px}
 
-.sheet-bg{background:rgba(10,8,6,.55);display:flex;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
-.sheet{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:14px 16px calc(var(--safe-b) + 16px);max-height:94vh;overflow:auto;box-shadow:0 -10px 40px rgba(0,0,0,.25)}
+/* ---- settings ---- */
+.sheet-bg{background:rgba(10,8,6,.55);display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--card);width:100%;max-width:560px;border-radius:24px 24px 0 0;padding:14px 16px calc(var(--safe-b) + 18px);max-height:94vh;overflow:auto}
 @media (min-width:700px){.sheet-bg{align-items:center}.sheet{border-radius:24px}}
 .grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 12px}
-.sheet h3{margin:0 0 12px;font-size:18px;display:flex;align-items:center;gap:8px}
-.sheet h3 .x{margin-inline-start:auto}
-.pv{background:#111;border-radius:16px;overflow:hidden;display:grid;place-items:center;min-height:200px;max-height:58vh}
-.pv img,.pv video,.pv canvas{max-width:100%;max-height:58vh;display:block}
-.status{text-align:center;color:#ddd;padding:30px 16px;font-size:14px;line-height:1.8}
-.bar{height:6px;border-radius:9px;background:#333;overflow:hidden;margin:10px auto 0;width:200px}
-.bar i{display:block;height:100%;width:0;background:var(--accent-2);transition:width .2s}
-.btnrow{display:flex;gap:10px;margin-top:14px}
-.btnrow .pbtn{margin:0;flex:1}
-.linkbtn{display:block;margin:12px auto 0;color:var(--accent);font-weight:700;font-size:14px;padding:6px}
-
-/* settings */
-.set-sec{margin:18px 0 6px;font-size:13px;color:var(--accent);font-weight:800}
+.sheet h3{margin:0 0 6px;font-size:18px;display:flex;align-items:center}
+.sheet h3 .ibtn{margin-inline-start:auto}
+.set-sec{margin:20px 0 4px;font-size:13px;color:var(--accent);font-weight:800}
 .field{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}
 .field>label:not(.sw){flex:1;font-size:15px}
 .field.col{flex-direction:column;align-items:stretch}
 .field.col>label{margin-bottom:8px}
 .txt{width:100%;font:inherit;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
-select.txt{appearance:auto}
 .sw{position:relative;width:50px;height:30px;flex:none}
 .sw input{opacity:0;width:0;height:0;position:absolute}
 .sw span{position:absolute;inset:0;border-radius:99px;background:var(--line);transition:.2s}
@@ -161,106 +132,91 @@ select.txt{appearance:auto}
 .sw input:checked+span{background:var(--accent)}
 .sw input:checked+span::after{right:23px}
 .seg{display:flex;background:var(--chip);border-radius:12px;padding:3px;gap:3px;flex-wrap:wrap}
-.seg button{flex:1;padding:9px 6px;border-radius:9px;font-size:14px;white-space:nowrap;min-width:64px}
+.seg button{flex:1;padding:9px 6px;border-radius:9px;font-size:14px;white-space:nowrap;min-width:60px}
 .seg button.on{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.12);font-weight:800;color:var(--accent)}
-.swatches{display:flex;gap:10px}
-.swatches button{width:38px;height:38px;border-radius:50%;border:3px solid transparent;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)}
-.swatches button.on{border-color:var(--accent)}
-.setpv{position:sticky;top:-14px;z-index:2;background:var(--card);padding:4px 0 8px}
-.setpv canvas{width:100%;max-height:34vh;object-fit:contain;border-radius:14px;background:#111;display:block}
+.capprev{background:var(--bg);border:1px dashed var(--line);border-radius:14px;padding:14px;white-space:pre-line;line-height:1.9;font-size:15px;margin-top:8px}
+.capprev small{display:block;color:var(--muted);font-size:12px;margin-bottom:4px}
+.folder{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.folder svg{color:var(--accent)}
+.folder span{flex:1;font-size:15px;direction:ltr;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sbtn{display:flex;align-items:center;gap:6px;padding:8px 14px;border-radius:99px;background:var(--chip);font-weight:700;font-size:14px;color:var(--accent)}
+.credit{text-align:center;color:var(--muted);font-size:12px;margin-top:22px}
 
-/* progress + toast */
-#scan{background:rgba(10,8,6,.6);display:grid;place-items:center}
-#scan .box{background:var(--card);border-radius:20px;padding:24px 26px;text-align:center;min-width:260px;box-shadow:var(--shadow)}
-#scan .bar{background:var(--line);width:220px}
+#busy{background:rgba(10,8,6,.5);display:grid;place-items:center;z-index:70}
+#busy .box{background:var(--card);border-radius:20px;padding:24px 28px;text-align:center;min-width:240px;box-shadow:var(--shadow)}
+.spin{width:34px;height:34px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:sp 1s linear infinite;margin:0 auto 12px}
+@keyframes sp{to{transform:rotate(360deg)}}
 #toast{position:fixed;bottom:calc(var(--safe-b) + 24px);left:50%;transform:translateX(-50%) translateY(20px);background:#222;color:#fff;padding:12px 18px;border-radius:14px;font-size:14px;z-index:80;opacity:0;pointer-events:none;transition:.25s;max-width:90vw;text-align:center}
 #toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
-.spin{width:34px;height:34px;border-radius:50%;border:3px solid #555;border-top-color:var(--accent-2);animation:sp 1s linear infinite;margin:0 auto 12px}
-@keyframes sp{to{transform:rotate(360deg)}}
 </style>
 </head>
 <body>
 
-<header>
-  <div class="hrow">
-    <div class="brand">
-      <h1>في مثل هذا اليوم</h1>
-      <small id="libInfo">ذكرياتك من كل السنوات</small>
-    </div>
-    <button class="ibtn hidden" id="instBtn" title="تثبيت التطبيق"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg></button>
-    <button class="ibtn" id="addBtn" title="إضافة صور وفيديوهات"><svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg></button>
-    <button class="ibtn" id="setBtn" title="الإعدادات"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></button>
-  </div>
-</header>
+<!-- 1) install -->
+<section class="screen hidden" id="scrInstall">
+  <img class="logo" src="icons/icon-192.png" alt="">
+  <h1>في مثل هذا اليوم</h1>
+  <p>ثبّت التطبيق على الشاشة الرئيسية ليعمل كتطبيق مستقل وبدون إنترنت.</p>
+  <button class="pbtn" id="btnInstall"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>تثبيت التطبيق</button>
+  <div class="ios-steps hidden" id="iosSteps">١. اضغط زر المشاركة <b>⬆︎</b> أسفل Safari<br>٢. اختر <b>«إضافة إلى الشاشة الرئيسية»</b><br>٣. افتح التطبيق من أيقونته</div>
+  <div class="ios-steps hidden" id="menuSteps">من قائمة المتصفح <b>⋮</b> اختر <b>«تثبيت التطبيق»</b> أو <b>«إضافة إلى الشاشة الرئيسية»</b></div>
+  <button class="linkbtn" id="btnSkipInstall">المتابعة بدون تثبيت</button>
+</section>
 
-<main>
-  <div class="datebar">
-    <button class="ibtn" id="prevDay" title="اليوم السابق"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
-    <div class="dd">
-      <div class="kicker" id="dayKicker">اليوم</div>
-      <div class="big" id="dayTitle">—</div>
-      <input type="date" id="datePick" aria-label="اختيار يوم">
-    </div>
-    <button class="ibtn" id="nextDay" title="اليوم التالي"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
-  </div>
+<!-- 1b) installed, open from home screen -->
+<section class="screen hidden" id="scrInstalled">
+  <img class="logo" src="icons/icon-192.png" alt="">
+  <h1>تم التثبيت ✓</h1>
+  <p>افتح التطبيق من أيقونته في الشاشة الرئيسية.</p>
+  <button class="linkbtn" id="btnContinueHere">المتابعة هنا</button>
+</section>
 
-  <section id="onboard" class="empty">
-    <div class="art">ذكرياتك تنتظرك</div>
-    <p>اختر صور وفيديوهات الكاميرا مرة واحدة، وسيعرض لك التطبيق ما التقطته في مثل هذا اليوم من كل السنوات.<br>تبقى الصور على جهازك ولا تُرفع إلى أي مكان.</p>
-    <button class="pbtn" data-pick="gallery"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>السماح بالوصول للأستوديو</button>
-    <button class="pbtn alt" data-pick="files"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>من الملفات (مجلد الكاميرا DCIM)</button>
-    <button class="pbtn alt" data-pick="folder"><svg viewBox="0 0 24 24"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-1 8h-3v3h-2v-3h-3v-2h3V9h2v3h3v2z"/></svg>اختيار مجلد كامل</button>
-    <button class="pbtn alt hidden" id="reopenDir"></button>
-    <div class="hint">
-      <b>لاختيار كل صور الكاميرا دفعة واحدة:</b><br>
-      • أندرويد (شاومي وغيره): اضغط «من الملفات» ← افتح <b>DCIM ← Camera</b> ← اضغط مطولاً على صورة ثم «تحديد الكل».<br>
-      • آيفون: «السماح بالوصول للأستوديو» ← حدد الصور من الألبوم.<br>
-      • الكمبيوتر: «اختيار مجلد كامل» واختر مجلد الصور.
-    </div>
-  </section>
+<!-- 2) permission -->
+<section class="screen hidden" id="scrPerm">
+  <img class="logo" src="icons/icon-192.png" alt="">
+  <h1 id="permTitle">الوصول إلى صورك</h1>
+  <p id="permText">اسمح للتطبيق بقراءة مجلد الكاميرا لعرض ذكرياتك. تُقرأ الصور من مكانها ولا تُنسخ أو تُرفع.</p>
+  <button class="pbtn" id="btnAllow"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg><span id="allowTxt">سماح</span></button>
+  <button class="linkbtn hidden" id="btnOtherFolder">اختيار مجلد آخر</button>
+</section>
 
-  <section id="dayView" class="hidden">
-    <div class="chips-wrap" id="chipsWrap">
-      <div class="chips-title" id="chipsTitle"></div>
-      <div class="chips" id="chips"></div>
+<!-- 3) main -->
+<div id="scrMain" class="hidden">
+  <header>
+    <div class="hrow">
+      <h1 class="brand">في مثل هذا اليوم</h1>
+      <button class="ibtn" id="setBtn" title="الإعدادات"><svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg></button>
     </div>
+  </header>
+  <main>
+    <div class="datebar">
+      <button class="ibtn" id="prevDay" title="اليوم السابق"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
+      <div class="dd">
+        <div class="kicker" id="dayKicker">اليوم</div>
+        <div class="big" id="dayTitle">—</div>
+        <input type="date" id="datePick" aria-label="اختيار يوم">
+      </div>
+      <button class="ibtn" id="nextDay" title="اليوم التالي"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
+    </div>
+    <div class="chips" id="chips"></div>
     <div id="dayContent"></div>
-  </section>
-  <footer>تصميم: ناصر بن حمدان التوبي</footer>
-</main>
+  </main>
+</div>
 
-<input type="file" id="inGallery" accept="image/*,video/*" multiple hidden>
-<input type="file" id="inFiles" multiple hidden>
 <input type="file" id="inFolder" webkitdirectory multiple hidden>
+<input type="file" id="inGallery" accept="image/*,video/*" multiple hidden>
 
 <!-- viewer -->
 <div id="viewer" class="overlay hidden">
   <div class="vtop">
     <button class="ibtn" id="vClose" title="إغلاق"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
     <div class="vt"><b id="vDate"></b><span id="vSub"></span></div>
-    <span class="vcount" id="vCount"></span>
   </div>
   <div class="vstage" id="vStage"></div>
   <button class="varrow r" id="vPrev"><svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg></button>
   <button class="varrow l" id="vNext"><svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg></button>
   <div class="vbot">
-    <button class="vbtn main" id="vShare"><span class="c"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg></span>مشاركة</button>
-    <button class="vbtn" id="vSave"><span class="c"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg></span>حفظ الأصل</button>
-  </div>
-</div>
-
-<!-- share sheet -->
-<div id="shareSheet" class="overlay sheet-bg hidden">
-  <div class="sheet">
-    <div class="grab"></div>
-    <h3>مشاركة الذكرى <button class="ibtn x" id="shClose"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></h3>
-    <div class="pv" id="shPv"></div>
-    <div class="btnrow">
-      <button class="pbtn" id="shGo"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>مشاركة</button>
-      <button class="pbtn alt" id="shSave"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5v2zM19 9h-4V3H9v6H5l7 7 7-7z"/></svg>حفظ</button>
-    </div>
-    <button class="linkbtn" id="shOrig">مشاركة الأصل بدون عبارة</button>
-    <button class="linkbtn" id="shEdit">تعديل العبارة والتاريخ</button>
+    <button class="sharebtn" id="vShare"><svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>مشاركة</button>
   </div>
 </div>
 
@@ -268,44 +224,37 @@ select.txt{appearance:auto}
 <div id="settings" class="overlay sheet-bg hidden">
   <div class="sheet">
     <div class="grab"></div>
-    <h3>الإعدادات <button class="ibtn x" id="setClose"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></h3>
-    <div class="setpv"><canvas id="setPv" width="10" height="10"></canvas></div>
+    <h3>الإعدادات <button class="ibtn" id="setClose"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></h3>
 
-    <div class="set-sec">العبارة</div>
-    <div class="field"><label>إظهار العبارة عند المشاركة</label><label class="sw"><input type="checkbox" data-k="showPhrase"><span></span></label></div>
-    <div class="field col"><label>نص العبارة</label><input class="txt" type="text" data-k="phrase" maxlength="60"></div>
-    <div class="field col"><label>خط العبارة</label><div class="seg" data-k="font"></div></div>
-
-    <div class="set-sec">التاريخ</div>
+    <div class="set-sec">النص المصاحب عند المشاركة</div>
+    <div class="capprev" id="capPrev"></div>
+    <div class="field"><label>إظهار العبارة</label><label class="sw"><input type="checkbox" data-k="showPhrase"><span></span></label></div>
+    <div class="field col"><label>نص العبارة</label><input class="txt" type="text" data-k="phrase" maxlength="80"></div>
     <div class="field"><label>إظهار التاريخ</label><label class="sw"><input type="checkbox" data-k="showDate"><span></span></label></div>
     <div class="field col"><label>صيغة التاريخ</label><select class="txt" data-k="fmt"></select></div>
     <div class="field col"><label>الأرقام</label><div class="seg" data-k="digits"><button data-v="ar">عربية ١٢٣</button><button data-v="en">إنجليزية 123</button></div></div>
     <div class="field col"><label>التاريخ المكتوب</label><div class="seg" data-k="dateSrc"><button data-v="capture">تاريخ الالتقاط</button><button data-v="today">تاريخ اليوم</button></div></div>
 
-    <div class="set-sec">شكل الإطار</div>
-    <div class="field col"><label>موضع العبارة</label><div class="seg" data-k="pos"><button data-v="below">شريط أسفل الصورة</button><button data-v="overlay">فوق الصورة</button></div></div>
-    <div class="field col"><label>لون الشريط</label><div class="swatches" data-k="theme"></div></div>
-    <div class="field col"><label>حجم الخط</label><div class="seg" data-k="size"><button data-v="s">صغير</button><button data-v="m">متوسط</button><button data-v="l">كبير</button></div></div>
-
     <div class="set-sec">طريقة العرض</div>
     <div class="field col"><label>عرض الصور والفيديوهات</label><div class="seg" data-k="view"><button data-v="grid">شبكة</button><button data-v="strip">شريط أفقي</button><button data-v="cards">بطاقات كبيرة</button></div></div>
-    <div class="field col" id="colsField"><label>عدد الأعمدة في الشبكة</label><div class="seg" data-k="cols"><button data-v="2">٢</button><button data-v="3">٣</button><button data-v="4">٤</button><button data-v="5">٥</button></div></div>
+    <div class="field col" id="colsField"><label>عدد الأعمدة</label><div class="seg" data-k="cols"><button data-v="2">٢</button><button data-v="3">٣</button><button data-v="4">٤</button><button data-v="5">٥</button></div></div>
     <div class="field col"><label>ترتيب السنوات</label><div class="seg" data-k="order"><button data-v="new">الأحدث أولاً</button><button data-v="old">الأقدم أولاً</button></div></div>
     <div class="field"><label>إظهار الفيديوهات</label><label class="sw"><input type="checkbox" data-k="videos"><span></span></label></div>
     <div class="field"><label>صورة غلاف للذكريات</label><label class="sw"><input type="checkbox" data-k="hero"><span></span></label></div>
 
-    <div class="set-sec">التطبيق</div>
-    <div class="field" id="instField"><label id="instLabel">تثبيت التطبيق على الشاشة الرئيسية</label><button class="sbtn" id="instBtn2">تثبيت</button></div>
-    <div class="hint hidden" id="iosHint" style="margin-top:10px">للتثبيت على آيفون أو آيباد: افتح التطبيق في <b>Safari</b> ← اضغط زر المشاركة <b>⬆︎</b> ← «<b>إضافة إلى الشاشة الرئيسية</b>».</div>
-    <div class="field"><label>العمل بدون إنترنت</label><span id="offState" style="color:var(--muted);font-size:14px">—</span></div>
+    <div class="set-sec">مجلدات الصور</div>
+    <div id="folderList"></div>
+    <div class="field" style="border:0"><label id="libCount">—</label><button class="sbtn" id="addFolder">+ إضافة مجلد</button></div>
 
-    <div class="set-sec">المكتبة</div>
-    <div class="field"><label id="libCount">—</label><button class="sbtn" id="clearLib">مسح القائمة</button></div>
+    <div class="set-sec">التطبيق</div>
+    <div class="field" id="instField"><label>تثبيت على الشاشة الرئيسية</label><button class="sbtn" id="instBtn2">تثبيت</button></div>
+    <div class="field"><label>العمل بدون إنترنت</label><span id="offState" style="color:var(--muted);font-size:14px">—</span></div>
     <button class="linkbtn" id="resetSet">استعادة الإعدادات الافتراضية</button>
+    <div class="credit">تصميم: ناصر بن حمدان التوبي</div>
   </div>
 </div>
 
-<div id="scan" class="overlay hidden"><div class="box"><div class="spin"></div><div id="scanTxt">جاري قراءة الذكريات…</div><div class="bar"><i id="scanBar"></i></div></div></div>
+<div id="busy" class="overlay hidden"><div class="box"><div class="spin"></div><div id="busyTxt">جاري تحميل الذكريات…</div></div></div>
 <div id="toast"></div>
 
 <script>
@@ -314,78 +263,54 @@ const $=s=>document.querySelector(s);
 const AR='٠١٢٣٤٥٦٧٨٩';
 const MONTHS=['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'];
 const DAYS=['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-const FONTS={
-  'Amiri':{css:"'Amiri',serif",w:700,label:'أميري'},
-  'Tajawal':{css:"'Tajawal',sans-serif",w:800,label:'تجوال'},
-  'Reem Kufi':{css:"'Reem Kufi',sans-serif",w:600,label:'كوفي'},
-  'Aref Ruqaa':{css:"'Aref Ruqaa',serif",w:700,label:'رقعة'}
-};
-const THEMES={
-  dark:{bg:'#141210',p:'#ffffff',d:'#e2bd7f',line:'rgba(226,189,127,.55)'},
-  light:{bg:'#fbf7ef',p:'#1f1b16',d:'#9a6a35',line:'rgba(154,106,53,.45)'},
-  gold:{bg:'#a8824e',p:'#ffffff',d:'#fff1d6',line:'rgba(255,255,255,.55)'},
-  navy:{bg:'#14213d',p:'#ffffff',d:'#f5b942',line:'rgba(245,185,66,.55)'},
-  green:{bg:'#1f4d3a',p:'#ffffff',d:'#f1d9a0',line:'rgba(241,217,160,.55)'},
-  rose:{bg:'#7a3b4b',p:'#ffffff',d:'#ffd9c2',line:'rgba(255,217,194,.55)'}
-};
-const FMTS=[
-  ['num','٢٣ / ١١ / ٢٠٢٦ م'],
-  ['num2','٢٣/١١/٢٠٢٦م'],
-  ['long','٢٣ نوفمبر ٢٠٢٦م'],
-  ['week','الإثنين ٢٣ نوفمبر ٢٠٢٦م'],
-  ['hijri','التاريخ الهجري'],
-  ['both','الميلادي والهجري معاً'],
-  ['dm','٢٣ نوفمبر (بدون سنة)'],
-  ['year','السنة فقط ٢٠٢٦م']
-];
+const FMTS=['num','num2','long','week','hijri','both','dm','year'];
 const DEF={phrase:'في مثل هذا اليوم',showPhrase:true,showDate:true,fmt:'num',digits:'ar',dateSrc:'capture',
-  font:'Amiri',pos:'below',theme:'dark',size:'m',view:'grid',cols:3,order:'new',videos:true,hero:true};
+  view:'grid',cols:3,order:'new',videos:true,hero:true};
 let S=Object.assign({},DEF);
 try{const s=JSON.parse(localStorage.getItem('otd-settings')||'null');if(s)Object.assign(S,s);}catch(e){}
-function saveS(){try{localStorage.setItem('otd-settings',JSON.stringify(S));}catch(e){}}
+const saveS=()=>{try{localStorage.setItem('otd-settings',JSON.stringify(S));}catch(e){}};
+const flag=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}};
 
 /* ---------- helpers ---------- */
 const dg=s=>S.digits==='ar'?String(s).replace(/\d/g,d=>AR[d]):String(s);
-const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-function toast(t,ms=2600){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('on'),ms);}
-function once(el,ev,to=8000){return new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('timeout')),to);el.addEventListener(ev,()=>{clearTimeout(t);res();},{once:true});el.addEventListener('error',()=>{clearTimeout(t);rej(new Error('err'));},{once:true});});}
 const pad=n=>String(n).padStart(2,'0');
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function toast(t,ms=2800){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(()=>el.classList.remove('on'),ms);}
+function once(el,ev,to=8000){return new Promise((res,rej)=>{const t=setTimeout(()=>rej(new Error('timeout')),to);el.addEventListener(ev,()=>{clearTimeout(t);res();},{once:true});el.addEventListener('error',()=>{clearTimeout(t);rej(new Error('err'));},{once:true});});}
+function busy(on,t){$('#busy').classList.toggle('hidden',!on);if(t)$('#busyTxt').textContent=t;}
 function hijri(d){
   try{const p=new Intl.DateTimeFormat('ar-u-ca-islamic-umalqura-nu-latn',{day:'numeric',month:'long',year:'numeric'}).formatToParts(d);
     const g=t=>(p.find(x=>x.type===t)||{}).value||'';
     return `${dg(g('day'))} ${g('month')} ${dg(g('year').replace(/\D/g,''))}هـ`;}catch(e){return '';}
 }
 function fmtDate(d,f=S.fmt){
-  const D=d.getDate(),M=d.getMonth()+1,Y=d.getFullYear();
+  const D=d.getDate(),M=d.getMonth()+1,Y=d.getFullYear(),L=`${dg(D)} ${MONTHS[M-1]} ${dg(Y)}م`;
   switch(f){
     case 'num2':return dg(`${D}/${M}/${Y}`)+'م';
-    case 'long':return `${dg(D)} ${MONTHS[M-1]} ${dg(Y)}م`;
-    case 'week':return `${DAYS[d.getDay()]} ${dg(D)} ${MONTHS[M-1]} ${dg(Y)}م`;
-    case 'hijri':return hijri(d)||`${dg(D)} ${MONTHS[M-1]} ${dg(Y)}م`;
-    case 'both':{const h=hijri(d);return `${dg(D)} ${MONTHS[M-1]} ${dg(Y)}م`+(h?` — ${h}`:'');}
+    case 'long':return L;
+    case 'week':return `${DAYS[d.getDay()]} ${L}`;
+    case 'hijri':return hijri(d)||L;
+    case 'both':{const h=hijri(d);return L+(h?` — ${h}`:'');}
     case 'dm':return `${dg(D)} ${MONTHS[M-1]}`;
     case 'year':return `${dg(Y)}م`;
     default:return dg(`${D} / ${M} / ${Y}`)+' م';
   }
 }
 function fmtTime(d){let h=d.getHours();const ap=h<12?'ص':'م';h=h%12||12;return `${dg(h)}:${dg(pad(d.getMinutes()))} ${ap}`;}
-function yearsAgo(n){
-  if(n<=0)return 'هذا العام';if(n===1)return 'قبل سنة';if(n===2)return 'قبل سنتين';
-  if(n<=10)return `قبل ${dg(n)} سنوات`;return `قبل ${dg(n)} سنة`;
-}
+function yearsAgo(n){if(n<=0)return 'هذا العام';if(n===1)return 'قبل سنة';if(n===2)return 'قبل سنتين';if(n<=10)return `قبل ${dg(n)} سنوات`;return `قبل ${dg(n)} سنة`;}
 function countTxt(n,one,two,few,many){if(n===1)return one;if(n===2)return two;if(n>=3&&n<=10)return `${dg(n)} ${few}`;return `${dg(n)} ${many}`;}
 const durTxt=s=>{if(!isFinite(s))return '';s=Math.round(s);return `${Math.floor(s/60)}:${pad(s%60)}`;};
 
 /* ---------- date detection ---------- */
-const VID_RE=/\.(mp4|mov|3gp|3g2|mkv|webm|avi|m4v|mts)$/i;
-const IMG_RE=/\.(jpe?g|png|webp|gif|heic|heif|avif|bmp|dng)$/i;
-const isVideo=f=>(f.type||'').startsWith('video/')||VID_RE.test(f.name);
-const isMedia=f=>(f.type||'').startsWith('image/')||(f.type||'').startsWith('video/')||IMG_RE.test(f.name)||VID_RE.test(f.name);
+const VID_RE=/\.(mp4|mov|3gp|3g2|mkv|webm|avi|m4v)$/i;
+const IMG_RE=/\.(jpe?g|png|webp|gif|heic|heif|avif|bmp)$/i;
+const isMediaName=n=>IMG_RE.test(n)||VID_RE.test(n);
+const TODAY=new Date();
 function validDate(y,m,d){if(y<1990||y>TODAY.getFullYear()+1||m<1||m>12||d<1||d>31)return null;const dt=new Date(y,m-1,d);return dt.getMonth()===m-1?dt:null;}
 function dateFromName(n){
   let m=n.match(/(?:^|\D)((?:19|20)\d{2})[-_.]?(0[1-9]|1[0-2])[-_.]?(0[1-9]|[12]\d|3[01])(?:[-_ T.]?([01]\d|2[0-3])[-_.:]?([0-5]\d)[-_.:]?([0-5]\d))?(?!\d)/);
   if(m){const d=validDate(+m[1],+m[2],+m[3]);if(d){if(m[4])d.setHours(+m[4],+m[5],+m[6]);return d;}}
-  m=n.match(/(?:^|\D)(1[3-9]\d{11})(?:\D|$)/); // ms timestamp
+  m=n.match(/(?:^|\D)(1[3-9]\d{11})(?:\D|$)/);
   if(m){const d=new Date(+m[1]);if(d.getFullYear()>2010&&d<=Date.now()+864e5)return d;}
   return null;
 }
@@ -402,13 +327,13 @@ function parseTiff(dv,t){
 async function exifDate(f){
   try{const buf=await f.slice(0,262144).arrayBuffer();const u=new Uint8Array(buf);
     for(let i=0;i<u.length-10;i++){if(u[i]===0x45&&u[i+1]===0x78&&u[i+2]===0x69&&u[i+3]===0x66&&u[i+4]===0&&u[i+5]===0){
-      const t=i+6;const b=u[t];if((b===0x49&&u[t+1]===0x49)||(b===0x4d&&u[t+1]===0x4d)){const d=parseTiff(new DataView(buf),t);if(d)return d;}}}
+      const t=i+6;if((u[t]===0x49&&u[t+1]===0x49)||(u[t]===0x4d&&u[t+1]===0x4d)){const d=parseTiff(new DataView(buf),t);if(d)return d;}}}
   }catch(e){}return null;
 }
 function mvhd(buf){
   const u=new Uint8Array(buf),dv=new DataView(buf);
   for(let i=0;i<u.length-24;i++){if(u[i]===0x6d&&u[i+1]===0x76&&u[i+2]===0x68&&u[i+3]===0x64){
-    const v=u[i+4];let t=v===1?Number(dv.getBigUint64(i+8)):dv.getUint32(i+8);
+    const t=u[i+4]===1?Number(dv.getBigUint64(i+8)):dv.getUint32(i+8);
     if(t>0){const d=new Date((t-2082844800)*1000);if(d.getFullYear()>1995&&d<=Date.now()+864e5)return d;}return null;}}
   return null;
 }
@@ -417,68 +342,81 @@ async function videoDate(f){
     if(f.size>524288){d=mvhd(await f.slice(Math.max(0,f.size-4194304)).arrayBuffer());if(d)return d;}}catch(e){}
   return null;
 }
-async function analyze(f){
-  const type=isVideo(f)?'video':'image';
-  let date=dateFromName(f.name);
-  if(!date)date=type==='image'?await exifDate(f):await videoDate(f);
-  if(!date)date=new Date(f.lastModified||Date.now());
-  return {file:f,name:f.name,type,date,y:date.getFullYear(),m:date.getMonth()+1,d:date.getDate()};
-}
+
+/* ---------- storage (folder handles + date cache only; no media is copied) ---------- */
+const idb=(()=>{let p;const open=()=>p||(p=new Promise((res,rej)=>{const r=indexedDB.open('otd',2);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('kv'))r.result.createObjectStore('kv');};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
+  const tx=(mode,fn)=>open().then(db=>new Promise((res,rej)=>{const t=db.transaction('kv',mode);const r=fn(t.objectStore('kv'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);}));
+  return{get:k=>tx('readonly',s=>s.get(k)).catch(()=>undefined),set:(k,v)=>tx('readwrite',s=>s.put(v,k)).catch(()=>{})};})();
+const FS=typeof window.showDirectoryPicker==='function';
 
 /* ---------- library ---------- */
-const TODAY=new Date();
+let dirs=[];           // FileSystemDirectoryHandle[]
 let items=[],byMD=new Map(),dayList=[];
 let sel={m:TODAY.getMonth()+1,d:TODAY.getDate()};
 const mdKey=(m,d)=>m+'-'+d;
-const fkey=f=>f.name+'|'+f.size+'|'+f.lastModified;
-function rebuild(){byMD=new Map();for(const it of items){const k=mdKey(it.m,it.d);if(!byMD.has(k))byMD.set(k,[]);byMD.get(k).push(it);}}
-const objURL=it=>it.url||(it.url=URL.createObjectURL(it.file));
 const visible=it=>S.videos||it.type==='image';
+function setDate(it,d){it.date=d;it.y=d.getFullYear();it.m=d.getMonth()+1;it.d=d.getDate();}
+function rebuild(){byMD=new Map();for(const it of items){const k=mdKey(it.m,it.d);if(!byMD.has(k))byMD.set(k,[]);byMD.get(k).push(it);}}
+async function getFile(it){return it.file||(it.file=await it.h.getFile());}
+async function objURL(it){return it.url||(it.url=URL.createObjectURL(await getFile(it)));}
 
-async function addFiles(list){
-  const seen=new Set(items.map(i=>fkey(i.file)));
-  const files=[...list].filter(f=>isMedia(f)&&!seen.has(fkey(f)));
-  if(!files.length){toast('لم يتم العثور على صور أو فيديوهات جديدة');return;}
-  $('#scan').classList.remove('hidden');
-  let done=0;const total=files.length,q=files.slice(),out=[];
-  const upd=()=>{$('#scanTxt').textContent=`جاري قراءة الذكريات… ${dg(done)} / ${dg(total)}`;$('#scanBar').style.width=(done/total*100)+'%';};
-  upd();
-  await Promise.all(Array.from({length:6},async()=>{while(q.length){const f=q.shift();try{out.push(await analyze(f));}catch(e){}done++;if(done%15===0||done===total)upd();}}));
-  items=items.concat(out);rebuild();
-  $('#scan').classList.add('hidden');
-  toast(`تمت إضافة ${dg(out.length)} من الذكريات`);
-  render();
+async function* walk(dir,prefix){
+  try{for await(const e of dir.values()){
+    if(e.name.startsWith('.'))continue;
+    if(e.kind==='file'){if(isMediaName(e.name))yield {h:e,name:e.name,path:prefix+'/'+e.name};}
+    else yield* walk(e,prefix+'/'+e.name);
+  }}catch(e){}
 }
-function pick(kind){
-  if(kind==='folder'&&window.showDirectoryPicker&&!pick.noFS){pickDir();return;}
-  $({gallery:'#inGallery',files:'#inFiles',folder:'#inFolder'}[kind]).click();
+async function scanAll(){
+  busy(true,'جاري تحميل الذكريات…');
+  const meta=(await idb.get('meta'))||{};
+  const out=[],pending=[];let n=0;
+  for(const dh of dirs){
+    for await(const e of walk(dh,dh.name)){
+      const it={h:e.h,name:e.name,path:e.path,type:VID_RE.test(e.name)?'video':'image'};
+      const d=dateFromName(e.name)||(meta[e.path]?new Date(meta[e.path]):null);
+      if(d)setDate(it,d);else pending.push(it);
+      out.push(it);
+      if(++n%250===0)$('#busyTxt').textContent=`جاري تحميل الذكريات… ${dg(n)}`;
+    }
+  }
+  if(pending.length){
+    let done=0;const q=pending.slice();
+    await Promise.all(Array.from({length:4},async()=>{while(q.length){const it=q.shift();
+      try{const f=await getFile(it);const d=(it.type==='image'?await exifDate(f):await videoDate(f))||new Date(f.lastModified);setDate(it,d);meta[it.path]=d.getTime();}
+      catch(e){setDate(it,new Date(0));}
+      if(++done%20===0)$('#busyTxt').textContent=`جاري قراءة التواريخ… ${dg(done)} / ${dg(pending.length)}`;}}));
+    idb.set('meta',meta);
+  }
+  items=out.filter(i=>i.y>1990);rebuild();busy(false);
+  show('main');render();
 }
-['#inGallery','#inFiles','#inFolder'].forEach(s=>$(s).addEventListener('change',e=>{const f=e.target.files;if(f&&f.length)addFiles(f);e.target.value='';}));
+async function addFilesFallback(list){ // browsers without folder access (iPhone etc.)
+  const files=[...list].filter(f=>isMediaName(f.name)||/^(image|video)\//.test(f.type||''));
+  if(!files.length)return;
+  busy(true,'جاري تحميل الذكريات…');
+  const out=[];const q=files.slice();
+  await Promise.all(Array.from({length:4},async()=>{while(q.length){const f=q.shift();
+    const it={file:f,name:f.name,path:f.webkitRelativePath||f.name,type:(VID_RE.test(f.name)||/^video\//.test(f.type))?'video':'image'};
+    let d=dateFromName(f.name);if(!d)d=(it.type==='image'?await exifDate(f):await videoDate(f))||new Date(f.lastModified);
+    setDate(it,d);out.push(it);}}));
+  items=items.concat(out);rebuild();busy(false);show('main');render();
+}
+async function pickFolder(){
+  if(!FS){ // fallback
+    const fi=$('#inFolder');if('webkitdirectory' in fi&&!/iphone|ipad|ipod/i.test(navigator.userAgent))fi.click();else $('#inGallery').click();return;
+  }
+  let h;
+  try{h=await window.showDirectoryPicker({id:'otd-photos',mode:'read',startIn:'pictures'});}
+  catch(e){if(e&&e.name==='AbortError')return;try{h=await window.showDirectoryPicker();}catch(e2){if(!(e2&&e2.name==='AbortError'))toast('تعذر فتح المجلد');return;}}
+  for(const d of dirs){try{if(await d.isSameEntry(h)){toast('هذا المجلد مضاف مسبقاً');return;}}catch(e){}}
+  dirs.push(h);await idb.set('dirs',dirs);
+  $('#settings').classList.add('hidden');
+  scanAll();
+}
+['#inFolder','#inGallery'].forEach(s=>$(s).addEventListener('change',e=>{if(e.target.files&&e.target.files.length)addFilesFallback(e.target.files);e.target.value='';}));
 
-/* desktop: remember folder (File System Access API) */
-const idb=(()=>{let p;const open=()=>p||(p=new Promise((res,rej)=>{const r=indexedDB.open('otd',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);}));
-  const tx=(mode,fn)=>open().then(db=>new Promise((res,rej)=>{const t=db.transaction('kv',mode);const r=fn(t.objectStore('kv'));t.oncomplete=()=>res(r&&r.result);t.onerror=()=>rej(t.error);}));
-  return{get:k=>tx('readonly',s=>s.get(k)),set:(k,v)=>tx('readwrite',s=>s.put(v,k)),del:k=>tx('readwrite',s=>s.delete(k))};})();
-async function* walk(dir){for await(const e of dir.values()){if(e.kind==='file'){if(isMedia({name:e.name,type:''}))yield await e.getFile();}else yield* walk(e);}}
-async function scanDir(h){
-  $('#scan').classList.remove('hidden');$('#scanTxt').textContent='جاري البحث في المجلد…';
-  const files=[];try{for await(const f of walk(h)){files.push(f);if(files.length%50===0)$('#scanTxt').textContent=`تم العثور على ${dg(files.length)} ملف…`;}}catch(e){}
-  $('#scan').classList.add('hidden');await addFiles(files);
-}
-async function pickDir(){
-  let h;try{h=await window.showDirectoryPicker({id:'otd-camera',mode:'read'});}
-  catch(e){if(e&&e.name==='AbortError')return;pick.noFS=true;$('#inFolder').click();return;}
-  try{await idb.set('dir',h);}catch(e){}
-  scanDir(h);
-}
-async function checkSavedDir(){
-  try{const h=await idb.get('dir');if(!h||!h.queryPermission)return;
-    const b=$('#reopenDir');b.innerHTML=`<svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>فتح المجلد المحفوظ: ${h.name}`;b.classList.remove('hidden');
-    b.onclick=async()=>{try{let p=await h.queryPermission({mode:'read'});if(p!=='granted')p=await h.requestPermission({mode:'read'});if(p==='granted')scanDir(h);}catch(e){toast('تعذر فتح المجلد، اختره من جديد');}};
-  }catch(e){}
-}
-
-/* ---------- thumbnails ---------- */
+/* ---------- thumbnails (made in memory, never saved) ---------- */
 async function loadBitmap(file){
   try{return await createImageBitmap(file);}catch(e){}
   const img=new Image();img.src=URL.createObjectURL(file);await img.decode();return img;
@@ -486,14 +424,13 @@ async function loadBitmap(file){
 const toBlob=(c,t,q)=>new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('blob')),t,q));
 async function makeThumb(it){
   const T=720;let src,w,h,cleanup=()=>{};
-  if(it.type==='image'){src=await loadBitmap(it.file);w=src.naturalWidth||src.width;h=src.naturalHeight||src.height;cleanup=()=>{src.close&&src.close();};}
-  else{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.src=objURL(it);
+  if(it.type==='image'){src=await loadBitmap(await getFile(it));w=src.naturalWidth||src.width;h=src.naturalHeight||src.height;cleanup=()=>{src.close&&src.close();};}
+  else{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.preload='auto';v.src=await objURL(it);
     await once(v,'loadeddata',10000);it.dur=v.duration;
     try{v.currentTime=Math.min(0.6,(v.duration||1)/3);await once(v,'seeked',5000);}catch(e){}
     src=v;w=v.videoWidth;h=v.videoHeight;cleanup=()=>{v.removeAttribute('src');v.load();};}
   if(!w||!h){cleanup();throw new Error('size');}
-  it.w=w;it.h=h;const k=Math.min(1,T/Math.min(w,h));
-  const c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);
+  const k=Math.min(1,T/Math.min(w,h));const c=document.createElement('canvas');c.width=Math.round(w*k);c.height=Math.round(h*k);
   c.getContext('2d').drawImage(src,0,0,c.width,c.height);cleanup();
   it.thumb=URL.createObjectURL(await toBlob(c,'image/jpeg',.82));
 }
@@ -501,7 +438,7 @@ let tq=[],tActive=0;
 function applyThumb(el,it){
   const img=el.querySelector('img');
   if(it.thumb){img.onload=()=>img.classList.add('ok');img.src=it.thumb;}
-  else if(it.thumbFail){el.querySelector('.ph').textContent=it.type==='video'?'فيديو':'لا يمكن عرض الصيغة';}
+  else if(it.thumbFail){el.querySelector('.ph').textContent=it.type==='video'?'فيديو':'صيغة غير مدعومة';}
   const b=el.querySelector('.vbadge');if(b&&it.dur)b.lastChild.textContent=durTxt(it.dur);
 }
 function wantThumb(it,el){
@@ -515,277 +452,126 @@ function pump(){
 }
 const io=new IntersectionObserver(es=>{for(const e of es)if(e.isIntersecting){io.unobserve(e.target);const it=dayList[+e.target.dataset.i];if(it)wantThumb(it,e.target);}},{rootMargin:'400px'});
 
+/* ---------- screens ---------- */
+function show(name){
+  ['Install','Installed','Perm','Main'].forEach(n=>$('#scr'+n).classList.toggle('hidden',n.toLowerCase()!==name));
+  scrollTo(0,0);
+}
+
 /* ---------- rendering ---------- */
 const ICON_PLAY='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-const ICON_SHARE='<svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>';
-function tileHTML(it,i){
-  return `<button class="tile" data-i="${i}"><span class="ph"></span><img alt="">${it.type==='video'?`<span class="vbadge">${ICON_PLAY}<span></span></span>`:''}</button>`;
-}
-function daysIn(m){return new Date(2024,m,0).getDate();}
+const tileHTML=(it,i)=>`<button class="tile" data-i="${i}"><span class="ph"></span><img alt="">${it.type==='video'?`<span class="vbadge">${ICON_PLAY}<span></span></span>`:''}</button>`;
+const daysIn=m=>new Date(2024,m,0).getDate();
 function render(){
   io.disconnect();
+  tq.forEach(it=>{it.queued=false;it.waiters=[];});tq=[];
   const dt=new Date(TODAY.getFullYear(),sel.m-1,sel.d);
   const isToday=sel.m===TODAY.getMonth()+1&&sel.d===TODAY.getDate();
   $('#dayTitle').textContent=`${dg(sel.d)} ${MONTHS[sel.m-1]}`;
-  $('#dayKicker').innerHTML=isToday?'اليوم':`${DAYS[dt.getDay()]} · <button class="todaybtn" id="goToday">العودة لليوم</button>`;
+  $('#dayKicker').innerHTML=isToday?'اليوم':`${DAYS[dt.getDay()]} · <button class="todaybtn" id="goToday">اليوم</button>`;
   const gt=$('#goToday');if(gt)gt.onclick=e=>{e.stopPropagation();e.preventDefault();sel={m:TODAY.getMonth()+1,d:TODAY.getDate()};render();};
   $('#datePick').value=`${TODAY.getFullYear()}-${pad(sel.m)}-${pad(sel.d)}`;
 
-  const n=items.filter(visible).length;
-  $('#libInfo').textContent=items.length?`${dg(n)} صورة وفيديو في المكتبة`:'ذكرياتك من كل السنوات';
-  $('#onboard').classList.toggle('hidden',items.length>0);
-  $('#dayView').classList.toggle('hidden',!items.length);
-  // reset thumbnail queue for previous day
-  tq.forEach(it=>{it.queued=false;it.waiters=[];});tq=[];
-  if(!items.length)return;
-
-  // month chips
   const chips=[];
   for(let d=1;d<=daysIn(sel.m);d++){const c=(byMD.get(mdKey(sel.m,d))||[]).filter(visible).length;
     if(c||d===sel.d)chips.push(`<button class="chip${d===sel.d?' on':''}" data-d="${d}">${dg(d)} ${MONTHS[sel.m-1]}${c?`<b>${dg(c)}</b>`:''}</button>`);}
-  $('#chipsTitle').textContent=`أيام بها ذكريات في ${MONTHS[sel.m-1]}`;
   $('#chips').innerHTML=chips.join('');
   const on=$('#chips .chip.on');if(on)on.scrollIntoView({inline:'center',block:'nearest'});
 
   const list=(byMD.get(mdKey(sel.m,sel.d))||[]).filter(visible);
   const box=$('#dayContent');
-  if(!list.length){dayList=[];box.innerHTML=noMemHTML();box.querySelectorAll('[data-jm]').forEach(b=>b.onclick=()=>{sel={m:+b.dataset.jm,d:+b.dataset.jd};render();scrollTo({top:0,behavior:'smooth'});});return;}
+  if(!list.length){dayList=[];box.innerHTML=noMemHTML();box.querySelectorAll('[data-jm]').forEach(b=>b.onclick=()=>{sel={m:+b.dataset.jm,d:+b.dataset.jd};render();});return;}
 
   const years=[...new Set(list.map(i=>i.y))].sort((a,b)=>S.order==='new'?b-a:a-b);
   dayList=[];const groups=years.map(y=>{const g=list.filter(i=>i.y===y).sort((a,b)=>a.date-b.date);dayList.push(...g);return [y,g];});
   let html='';
   if(S.hero){
-    const imgs=dayList.filter(i=>i.type==='image');const coverIdx=dayList.indexOf(imgs.length?imgs[Math.floor(Math.random()*imgs.length)]:dayList[0]);
-    html+=`<button class="hero tile" data-i="${coverIdx}"><span class="ph"></span><img alt=""><div class="cap"><div class="t">${esc(S.phrase||'في مثل هذا اليوم')}</div><div class="s">${countTxt(list.length,'ذكرى واحدة','ذكريتان','ذكريات','ذكرى')} من ${countTxt(years.length,'سنة واحدة','سنتين','سنوات','سنة')}</div></div></button>`;
+    const imgs=dayList.filter(i=>i.type==='image');const ci=dayList.indexOf(imgs.length?imgs[Math.floor(Math.random()*imgs.length)]:dayList[0]);
+    html+=`<button class="hero tile" data-i="${ci}"><span class="ph"></span><img alt=""><div class="cap"><div class="t">${esc(S.phrase||'في مثل هذا اليوم')}</div><div class="s">${countTxt(list.length,'ذكرى واحدة','ذكريتان','ذكريات','ذكرى')} من ${countTxt(years.length,'سنة واحدة','سنتين','سنوات','سنة')}</div></div></button>`;
   }
   let idx=0;
   for(const [y,g] of groups){
-    const nImg=g.filter(i=>i.type==='image').length,nVid=g.length-nImg;
-    const parts=[];if(nImg)parts.push(countTxt(nImg,'صورة','صورتان','صور','صورة'));if(nVid)parts.push(countTxt(nVid,'فيديو','فيديوهان','فيديوهات','فيديو'));
+    const nImg=g.filter(i=>i.type==='image').length,nVid=g.length-nImg,parts=[];
+    if(nImg)parts.push(countTxt(nImg,'صورة','صورتان','صور','صورة'));if(nVid)parts.push(countTxt(nVid,'فيديو','فيديوهان','فيديوهات','فيديو'));
     html+=`<section class="year"><div class="yhead"><h2>${yearsAgo(TODAY.getFullYear()-y)}</h2><span class="yr">${dg(y)}</span><span class="cnt">${parts.join(' و ')}</span></div>`;
-    if(S.view==='cards'){
-      html+='<div class="v-cards">'+g.map(it=>{const i=idx++;return `<div class="card">${tileHTML(it,i)}<div class="cardbar"><span class="tm">${fmtTime(it.date)}</span><button class="sbtn" data-share="${i}">${ICON_SHARE}مشاركة</button></div></div>`;}).join('')+'</div>';
-    }else{
-      html+=`<div class="v-${S.view}" style="--cols:${S.cols}">`+g.map(it=>tileHTML(it,idx++)).join('')+'</div>';
-    }
-    html+='</section>';
+    html+=`<div class="v-${S.view}" style="--cols:${S.cols}">`+g.map(it=>tileHTML(it,idx++)).join('')+'</div></section>';
   }
   box.innerHTML=html;
   box.querySelectorAll('.tile').forEach(el=>io.observe(el));
 }
 function noMemHTML(){
-  // find nearest days with memories
   const base=new Date(2024,sel.m-1,sel.d);let prev=null,next=null;
+  const has=d=>(byMD.get(mdKey(d.getMonth()+1,d.getDate()))||[]).some(visible);
   for(let k=1;k<=366&&(!prev||!next);k++){
-    if(!next){const d=new Date(base);d.setDate(d.getDate()+k);if((byMD.get(mdKey(d.getMonth()+1,d.getDate()))||[]).some(visible))next=d;}
-    if(!prev){const d=new Date(base);d.setDate(d.getDate()-k);if((byMD.get(mdKey(d.getMonth()+1,d.getDate()))||[]).some(visible))prev=d;}
+    if(!next){const d=new Date(base);d.setDate(d.getDate()+k);if(has(d))next=d;}
+    if(!prev){const d=new Date(base);d.setDate(d.getDate()-k);if(has(d))prev=d;}
   }
   const b=d=>d?`<button class="chip" data-jm="${d.getMonth()+1}" data-jd="${d.getDate()}">${dg(d.getDate())} ${MONTHS[d.getMonth()]}</button>`:'';
-  return `<div class="nomem"><div class="art">لا توجد ذكريات في هذا اليوم</div>لم تُلتقط صور أو فيديوهات في ${dg(sel.d)} ${MONTHS[sel.m-1]} في السنوات السابقة.${prev||next?`<div class="row">${b(prev)}${next&&(!prev||next.getTime()!==prev.getTime())?b(next):''}</div>`:''}</div>`;
+  return `<div class="nomem"><div class="art">لا توجد ذكريات في هذا اليوم</div>${prev||next?`<div class="row">${b(prev)}${next&&(!prev||+next!==+prev)?b(next):''}</div>`:''}</div>`;
 }
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-/* ---------- day navigation ---------- */
+/* ---------- navigation ---------- */
 function shiftDay(k){const d=new Date(2024,sel.m-1,sel.d);d.setDate(d.getDate()+k);sel={m:d.getMonth()+1,d:d.getDate()};render();}
 $('#prevDay').onclick=()=>shiftDay(-1);
 $('#nextDay').onclick=()=>shiftDay(1);
 $('#datePick').addEventListener('click',e=>{try{e.target.showPicker();}catch(_){}});
 $('#datePick').addEventListener('change',e=>{const v=e.target.value;if(!v)return;const [,m,d]=v.split('-').map(Number);sel={m,d};render();});
-$('#chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;sel.d=+c.dataset.d;render();});
-$('#dayContent').addEventListener('click',e=>{
-  const sb=e.target.closest('[data-share]');if(sb){openShare(dayList[+sb.dataset.share]);return;}
-  const t=e.target.closest('.tile');if(t)openViewer(+t.dataset.i);
-});
-document.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>pick(b.dataset.pick));
-$('#addBtn').onclick=()=>openAddMenu();
-function openAddMenu(){
-  if(!items.length){pick('gallery');return;}
-  // reuse share sheet styled mini menu
-  const m=document.createElement('div');m.className='overlay sheet-bg';
-  m.innerHTML=`<div class="sheet"><div class="grab"></div><h3>إضافة ذكريات</h3>
-  <button class="pbtn" data-p="gallery">من الأستوديو</button><button class="pbtn alt" data-p="files">من الملفات (DCIM ← Camera)</button><button class="pbtn alt" data-p="folder">اختيار مجلد كامل</button>
-  <button class="linkbtn" data-p="x">إلغاء</button></div>`;
-  m.onclick=e=>{const b=e.target.closest('[data-p]');if(e.target===m||b){m.remove();if(b&&b.dataset.p!=='x')pick(b.dataset.p);}};
-  document.body.appendChild(m);
-}
+$('#chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(c){sel.d=+c.dataset.d;render();}});
+$('#dayContent').addEventListener('click',e=>{const t=e.target.closest('.tile');if(t)openViewer(+t.dataset.i);});
 
-/* ---------- viewer ---------- */
-let vi=0;
-function openViewer(i){vi=i;$('#viewer').classList.remove('hidden');document.body.style.overflow='hidden';showV();}
-function closeViewer(){$('#viewer').classList.add('hidden');$('#vStage').innerHTML='';document.body.style.overflow='';}
-function showV(){
-  const it=dayList[vi];if(!it)return;
+/* ---------- viewer + share ---------- */
+let vi=0,vTok=0;
+function openViewer(i){vi=i;$('#viewer').classList.remove('hidden');document.body.style.overflow='hidden';history.pushState({v:1},'');showV();}
+function closeViewer(fromPop){if($('#viewer').classList.contains('hidden'))return;$('#viewer').classList.add('hidden');$('#vStage').innerHTML='';document.body.style.overflow='';if(!fromPop)history.back();}
+addEventListener('popstate',()=>{closeViewer(true);$('#settings').classList.add('hidden');});
+async function showV(){
+  const it=dayList[vi];if(!it)return;const tok=++vTok;
   $('#vDate').textContent=fmtDate(it.date,'week');
   $('#vSub').textContent=`${yearsAgo(TODAY.getFullYear()-it.y)} · ${fmtTime(it.date)}`;
-  $('#vCount').textContent=`${dg(vi+1)} / ${dg(dayList.length)}`;
-  const st=$('#vStage');
-  if(it.type==='video')st.innerHTML=`<video src="${objURL(it)}" controls autoplay playsinline></video>`;
-  else{st.innerHTML=`<img alt="">`;const img=st.firstChild;if(it.thumb)img.src=it.thumb;const full=new Image();full.onload=()=>{img.src=full.src;};full.src=objURL(it);}
+  const st=$('#vStage');st.innerHTML='';
+  try{
+    const url=await objURL(it);if(tok!==vTok)return;
+    if(it.type==='video')st.innerHTML=`<video src="${url}" controls autoplay playsinline></video>`;
+    else{st.innerHTML=`<img alt="">`;const img=st.firstChild;if(it.thumb)img.src=it.thumb;const full=new Image();full.onload=()=>{if(tok===vTok)img.src=url;};full.src=url;}
+  }catch(e){st.innerHTML='<div style="opacity:.7">تعذر فتح الملف</div>';}
 }
 function navV(k){const n=vi+k;if(n<0||n>=dayList.length)return;vi=n;showV();}
-$('#vClose').onclick=closeViewer;
+$('#vClose').onclick=()=>closeViewer();
 $('#vNext').onclick=()=>navV(1);$('#vPrev').onclick=()=>navV(-1);
-$('#vShare').onclick=()=>{const v=$('#vStage video');if(v)v.pause();openShare(dayList[vi]);};
-$('#vSave').onclick=()=>{const it=dayList[vi];saveBlob(it.file,it.name);};
 (()=>{let x0=null,y0=0;const st=$('#vStage');
   st.addEventListener('touchstart',e=>{if(e.touches.length===1){x0=e.touches[0].clientX;y0=e.touches[0].clientY;}},{passive:true});
   st.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;
     if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy))navV(dx>0?1:-1);else if(dy>110&&Math.abs(dy)>Math.abs(dx)*1.5)closeViewer();});})();
 document.addEventListener('keydown',e=>{
-  if(!$('#shareSheet').classList.contains('hidden')){if(e.key==='Escape')closeShare();return;}
   if(!$('#settings').classList.contains('hidden')){if(e.key==='Escape')closeSettings();return;}
   if($('#viewer').classList.contains('hidden'))return;
   if(e.key==='Escape')closeViewer();else if(e.key==='ArrowLeft')navV(1);else if(e.key==='ArrowRight')navV(-1);
 });
 
-/* ---------- caption layer ---------- */
-async function ensureFonts(){
-  const F=FONTS[S.font]||FONTS.Amiri;
-  try{await Promise.race([Promise.all([document.fonts.load(`${F.w} 48px ${F.css}`,'في مثل'),document.fonts.load(`500 48px 'Tajawal'`,'٢٠٢٦')]),sleep(2500)]);}catch(e){}
-}
-function captionDate(it){return S.dateSrc==='today'?new Date():it.date;}
-function hasCaption(){return (S.showPhrase&&S.phrase.trim())||S.showDate;}
-function makeLayer(W,H,date){
-  const F=FONTS[S.font]||FONTS.Amiri,th=THEMES[S.theme]||THEMES.dark,ov=S.pos==='overlay';
-  const f={s:.8,m:1,l:1.25}[S.size]||1,unit=Math.sqrt(W*H)*0.9;
+function shareText(it){
   const lines=[];
-  if(S.showPhrase&&S.phrase.trim())lines.push({t:S.phrase.trim(),px:unit*0.056*f,fam:F.css,w:F.w,lh:F.css.includes('Amiri')||F.css.includes('Ruqaa')?1.45:1.3});
-  if(S.showDate)lines.push({t:fmtDate(date),px:unit*0.033*f,fam:"'Tajawal',sans-serif",w:500,date:true,lh:1.35});
-  if(!lines.length)return null;
-  const padY=unit*0.042*f,gap=lines.length>1?unit*0.028*f:0;
-  const content=lines.reduce((a,l)=>a+l.px*l.lh,0)+gap;
-  const fade=ov?unit*0.16:0,LH=Math.ceil(content+padY*2+fade);
-  const c=document.createElement('canvas');c.width=W;c.height=LH;const x=c.getContext('2d');
-  if(ov){const g=x.createLinearGradient(0,0,0,LH);g.addColorStop(0,'rgba(0,0,0,0)');g.addColorStop(Math.min(.95,fade/LH),'rgba(0,0,0,.42)');g.addColorStop(1,'rgba(0,0,0,.72)');x.fillStyle=g;x.fillRect(0,0,W,LH);}
-  else{x.fillStyle=th.bg;x.fillRect(0,0,W,LH);}
-  x.direction='rtl';x.textAlign='center';x.textBaseline='middle';
-  let y=fade+padY;
-  lines.forEach((l,i)=>{
-    let px=l.px;x.font=`${l.w} ${px}px ${l.fam}`;const mw=x.measureText(l.t).width;
-    if(mw>W*0.9){px*=W*0.9/mw;x.font=`${l.w} ${px}px ${l.fam}`;}
-    const h=l.px*l.lh;
-    if(ov){x.shadowColor='rgba(0,0,0,.55)';x.shadowBlur=unit*0.012;x.fillStyle=l.date?'#f6dca8':'#fff';}
-    else{x.shadowBlur=0;x.fillStyle=l.date?th.d:th.p;}
-    x.fillText(l.t,W/2,y+h/2);y+=h;
-    if(i===0&&lines.length>1){x.shadowBlur=0;x.strokeStyle=ov?'rgba(255,255,255,.55)':th.line;x.lineWidth=Math.max(1,unit*0.0022);
-      const dw=Math.min(W*0.14,unit*0.12),cy=y+gap/2;x.beginPath();x.moveTo(W/2-dw/2,cy);x.lineTo(W/2+dw/2,cy);x.stroke();
-      x.fillStyle=x.strokeStyle;x.beginPath();x.arc(W/2,cy,Math.max(1.5,unit*0.004),0,Math.PI*2);x.fill();y+=gap;}
-  });
-  return c;
+  if(S.showPhrase&&S.phrase.trim())lines.push(S.phrase.trim());
+  if(S.showDate)lines.push(fmtDate(S.dateSrc==='today'?new Date():it.date));
+  return lines.join('\n');
 }
-function composeOn(src,w,h,layer){
-  const H=layer&&S.pos==='below'?h+layer.height:h;
-  const c=document.createElement('canvas');c.width=w;c.height=H;const x=c.getContext('2d');
-  x.drawImage(src,0,0,w,h);if(layer)x.drawImage(layer,0,S.pos==='below'?h:h-layer.height);
-  return c;
-}
-async function composeImage(it){
-  await ensureFonts();
-  const b=await loadBitmap(it.file);let w=b.naturalWidth||b.width,h=b.naturalHeight||b.height;
-  const k=Math.min(1,2560/Math.max(w,h));w=Math.round(w*k);h=Math.round(h*k);
-  const c=composeOn(b,w,h,makeLayer(w,h,captionDate(it)));b.close&&b.close();
-  return toBlob(c,'image/jpeg',.92);
-}
-function recMime(){
-  const list=['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/mp4;codecs=avc1','video/mp4','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'];
-  if(!window.MediaRecorder)return null;for(const m of list)if(MediaRecorder.isTypeSupported(m))return m;return null;
-}
-async function composeVideo(it,onP,ctl){
-  const mime=recMime();const canvasOK=!!HTMLCanvasElement.prototype.captureStream;
-  if(!mime||!canvasOK)throw new Error('norec');
-  let ac=null;try{ac=new (window.AudioContext||window.webkitAudioContext)();ac.resume();}catch(e){}
-  await ensureFonts();
-  const v=document.createElement('video');v.playsInline=true;v.preload='auto';v.src=objURL(it);
-  await once(v,'loadedmetadata',15000);
-  let w=v.videoWidth,h=v.videoHeight;const k=Math.min(1,1280/Math.max(w,h));w=Math.round(w*k/2)*2;h=Math.round(h*k/2)*2;
-  const layer=makeLayer(w,h,captionDate(it));
-  const H=layer&&S.pos==='below'?h+layer.height:h;
-  const c=document.createElement('canvas');c.width=w;c.height=H+(H%2);const x=c.getContext('2d');
-  const stream=c.captureStream(30);
-  let audio=true;
-  if(ac){try{const src=ac.createMediaElementSource(v);const dst=ac.createMediaStreamDestination();src.connect(dst);dst.stream.getAudioTracks().forEach(t=>stream.addTrack(t));}catch(e){audio=false;}}else audio=false;
-  const rec=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:6e6});
-  const chunks=[];rec.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data);};
-  const done=new Promise(r=>rec.onstop=r);
-  const frame=()=>{x.fillStyle='#000';x.fillRect(0,0,c.width,c.height);x.drawImage(v,0,0,w,h);if(layer)x.drawImage(layer,0,S.pos==='below'?h:h-layer.height);};
-  frame();rec.start(500);
-  try{v.muted=false;await v.play();}catch(e){audio=false;v.muted=true;await v.play();}
-  let stopped=false;
-  const loop=()=>{if(ctl.cancelled){ctl.cancel();return;}if(stopped)return;frame();onP(v.duration?v.currentTime/v.duration:0);
-    if(v.requestVideoFrameCallback&&!v.ended)v.requestVideoFrameCallback(loop);else if(!v.ended)requestAnimationFrame(loop);};
-  loop();
-  ctl.cancel=()=>{stopped=true;v.pause();if(rec.state!=='inactive')rec.stop();};
-  await new Promise(r=>{if(ctl.cancelled)return r();v.onended=r;ctl.onCancel=r;const o=ctl.cancel;ctl.cancel=()=>{o();r();};});
-  stopped=true;frame();await sleep(150);if(rec.state!=='inactive')rec.stop();await done;
-  v.removeAttribute('src');v.load();try{ac&&ac.close();}catch(e){}
-  if(ctl.cancelled)return null;
-  const type=mime.split(';')[0];
-  return {blob:new Blob(chunks,{type}),ext:type==='video/mp4'?'mp4':'webm',audio};
-}
-
-/* ---------- share / save ---------- */
-let dl=null;
-try{if(window.claude&&window.claude.use)window.claude.use('downloads').then(x=>{dl=x;}).catch(()=>{});}catch(e){}
-function anchorSave(blob,name){
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
-  setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},4000);
-}
-async function saveBlob(blob,name){
-  if(dl){try{await dl.save({filename:name,data:blob});toast('تم الحفظ');return true;}catch(e){if(e&&e.code==='declined')return false;}}
-  try{anchorSave(blob,name);toast('تم تنزيل الملف');return true;}catch(e){toast('تعذر الحفظ في هذا المتصفح');return false;}
-}
-async function shareBlob(blob,name){
-  const file=new File([blob],name,{type:blob.type||'application/octet-stream'});
-  if(navigator.canShare&&navigator.share){
-    try{if(navigator.canShare({files:[file]})){await navigator.share({files:[file]});return;}}
-    catch(e){if(e&&e.name==='AbortError')return;}
-  }
-  toast('المشاركة المباشرة غير متاحة هنا، سيتم حفظ الملف لتشاركه من الأستوديو',3600);
-  await saveBlob(blob,name);
-}
-let shItem=null,shOut=null,shCtl=null;
-const baseName=it=>`ذكرى-${it.y}-${pad(it.m)}-${pad(it.d)}`;
-async function openShare(it){
-  if(!it)return;shItem=it;shOut=null;
-  $('#shareSheet').classList.remove('hidden');
-  const pv=$('#shPv');$('#shGo').disabled=$('#shSave').disabled=true;
-  if(!hasCaption()){shOut={blob:it.file,name:it.name};pv.innerHTML=it.type==='video'?`<video src="${objURL(it)}" controls playsinline></video>`:`<img src="${it.thumb||objURL(it)}" alt="">`;enableSh();return;}
-  if(it.type==='image'){
-    pv.innerHTML='<div class="status"><div class="spin"></div>جاري تجهيز الصورة…</div>';
-    try{const b=await composeImage(it);if(shItem!==it)return;shOut={blob:b,name:baseName(it)+'.jpg'};
-      pv.innerHTML=`<img src="${URL.createObjectURL(b)}" alt="">`;enableSh();}
-    catch(e){pv.innerHTML='<div class="status">تعذر تجهيز هذه الصورة (قد تكون صيغتها غير مدعومة في هذا المتصفح).<br>يمكنك مشاركة الأصل.</div>';}
+$('#vShare').onclick=async()=>{
+  const it=dayList[vi];if(!it)return;
+  const v=$('#vStage video');if(v)v.pause();
+  const text=shareText(it);
+  let f;try{f=await getFile(it);}catch(e){toast('تعذر قراءة الملف');return;}
+  const data={files:[f]};if(text)data.text=text;
+  if(navigator.share&&navigator.canShare&&navigator.canShare({files:[f]})){
+    try{await navigator.share(data);}
+    catch(e){if(e.name!=='AbortError'){try{await navigator.share({files:[f]});}catch(e2){}}}
+  }else if(navigator.share&&text){
+    try{await navigator.share({text});}catch(e){}
   }else{
-    pv.innerHTML=`<div class="status"><div class="spin"></div><span id="vpTxt">جاري إضافة العبارة إلى الفيديو…</span><div class="bar"><i id="vpBar"></i></div><button class="linkbtn" id="vpCancel">إيقاف</button></div>`;
-    const ctl=shCtl={};$('#vpCancel').onclick=()=>{ctl.cancelled=true;ctl.cancel&&ctl.cancel();};
-    try{
-      const r=await composeVideo(it,p=>{const b=$('#vpBar'),t=$('#vpTxt');if(b)b.style.width=(p*100).toFixed(1)+'%';if(t)t.textContent=`جاري إضافة العبارة إلى الفيديو… ${dg(Math.round(p*100))}٪`;},ctl);
-      if(shItem!==it)return;
-      if(!r){pv.innerHTML='<div class="status">تم الإيقاف. يمكنك مشاركة الفيديو الأصلي.</div>';return;}
-      shOut={blob:r.blob,name:baseName(it)+'.'+r.ext};
-      pv.innerHTML=`<video src="${URL.createObjectURL(r.blob)}" controls playsinline></video>`;
-      if(!r.audio)toast('تم تجهيز الفيديو بدون صوت لأن المتصفح منع تشغيل الصوت',3600);
-      enableSh();
-    }catch(e){pv.innerHTML='<div class="status">هذا المتصفح لا يدعم كتابة العبارة على الفيديو.<br>يمكنك مشاركة الفيديو الأصلي.</div>';}
+    try{await navigator.clipboard.writeText(text);toast('المشاركة غير متاحة في هذا المتصفح، تم نسخ النص');}catch(e){toast('المشاركة غير متاحة في هذا المتصفح');}
   }
-}
-function enableSh(){$('#shGo').disabled=$('#shSave').disabled=false;}
-function closeShare(){if(shCtl&&shCtl.cancel){shCtl.cancelled=true;shCtl.cancel();}shCtl=null;shItem=null;$('#shareSheet').classList.add('hidden');$('#shPv').innerHTML='';}
-$('#shClose').onclick=closeShare;
-$('#shareSheet').addEventListener('click',e=>{if(e.target.id==='shareSheet')closeShare();});
-$('#shGo').onclick=()=>{if(shOut)shareBlob(shOut.blob,shOut.name);};
-$('#shSave').onclick=()=>{if(shOut)saveBlob(shOut.blob,shOut.name);};
-$('#shOrig').onclick=()=>{if(shItem)shareBlob(shItem.file,shItem.name);};
-$('#shEdit').onclick=()=>{const it=shItem;closeShare();openSettings(it);};
+};
 
 /* ---------- settings ---------- */
-let setReturn=null;
-function buildSettings(){
-  $('.seg[data-k="font"]').innerHTML=Object.entries(FONTS).map(([k,f])=>`<button data-v="${k}" style="font-family:${f.css.replace(/"/g,"'")};font-weight:${f.w}">${f.label}</button>`).join('');
-  $('.swatches[data-k="theme"]').innerHTML=Object.entries(THEMES).map(([k,t])=>`<button data-v="${k}" style="background:${t.bg}" title="${k}"></button>`).join('');
-  const sample=new Date(TODAY);
-  $('select[data-k="fmt"]').innerHTML=FMTS.map(([k])=>`<option value="${k}">${esc(fmtDate(sample,k))}</option>`).join('');
-}
+function buildSettings(){$('select[data-k="fmt"]').innerHTML=FMTS.map(k=>`<option value="${k}"></option>`).join('');}
 function syncSettings(){
   document.querySelectorAll('#settings [data-k]').forEach(el=>{
     const k=el.dataset.k;
@@ -793,13 +579,16 @@ function syncSettings(){
     else if(el.tagName==='INPUT'||el.tagName==='SELECT'){if(document.activeElement!==el)el.value=S[k];}
     else el.querySelectorAll('button').forEach(b=>b.classList.toggle('on',String(S[k])===b.dataset.v));
   });
+  [...$('select[data-k="fmt"]').options].forEach(o=>o.textContent=fmtDate(new Date(TODAY),o.value));
   $('#colsField').classList.toggle('hidden',S.view!=='grid');
-  $('#libCount').textContent=`${dg(items.length)} ملف في القائمة الحالية`;
-  // refresh format labels (digits may change)
-  const sel_=$('select[data-k="fmt"]');[...sel_.options].forEach(o=>o.textContent=fmtDate(new Date(TODAY),o.value));
+  const sample=dayList[0]?dayList[0].date:new Date(TODAY);
+  const t=shareText({date:sample});
+  $('#capPrev').innerHTML=`<small>يُرسل مع الصورة أو الفيديو هكذا:</small>${t?esc(t):'<span style="color:var(--muted)">بدون نص</span>'}`;
+  $('#folderList').innerHTML=dirs.map((d,i)=>`<div class="folder"><svg viewBox="0 0 24 24"><path d="M10 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg><span>${esc(d.name)}</span><button class="sbtn" data-rm="${i}">إزالة</button></div>`).join('');
+  $('#libCount').textContent=`${dg(items.length)} صورة وفيديو`;
 }
 function setVal(k,v){
-  if(k==='cols')v=+v;S[k]=v;saveS();syncSettings();drawPreview();
+  if(k==='cols')v=+v;S[k]=v;saveS();syncSettings();
   if(['view','cols','order','videos','hero','digits'].includes(k)||(k==='phrase'&&S.hero))render();
 }
 document.querySelectorAll('#settings [data-k]').forEach(el=>{
@@ -809,66 +598,79 @@ document.querySelectorAll('#settings [data-k]').forEach(el=>{
   else if(el.tagName==='SELECT')el.addEventListener('change',()=>setVal(k,el.value));
   else el.addEventListener('click',e=>{const b=e.target.closest('button[data-v]');if(b)setVal(k,b.dataset.v);});
 });
-let pvSrc=null,pvFor=null;
-function sampleCanvas(){
-  const c=document.createElement('canvas');c.width=900;c.height=675;const x=c.getContext('2d');
-  const g=x.createLinearGradient(0,0,0,675);g.addColorStop(0,'#f7c98b');g.addColorStop(.55,'#e78a5c');g.addColorStop(1,'#6b4a6e');x.fillStyle=g;x.fillRect(0,0,900,675);
-  x.fillStyle='rgba(255,240,200,.9)';x.beginPath();x.arc(620,300,80,0,7);x.fill();
-  x.fillStyle='#4a3552';x.beginPath();x.moveTo(0,500);x.quadraticCurveTo(250,380,480,470);x.quadraticCurveTo(700,560,900,440);x.lineTo(900,675);x.lineTo(0,675);x.fill();
-  x.fillStyle='#2e2238';x.beginPath();x.moveTo(0,590);x.quadraticCurveTo(300,520,560,600);x.quadraticCurveTo(760,650,900,580);x.lineTo(900,675);x.lineTo(0,675);x.fill();
-  return c;
-}
-async function drawPreview(){
-  const it=setReturn&&setReturn.type==='image'?setReturn:dayList.find(i=>i.type==='image'&&i.thumb);
-  if(pvFor!==it){pvFor=it;pvSrc=null;
-    if(it&&it.thumb){try{const img=new Image();img.src=it.thumb;await img.decode();pvSrc=img;}catch(e){}}
-    else if(it){try{await makeThumb(it);const img=new Image();img.src=it.thumb;await img.decode();pvSrc=img;}catch(e){}}
-  }
-  await ensureFonts();
-  const src=pvSrc||sampleCanvas();let w=src.naturalWidth||src.width,h=src.naturalHeight||src.height;const k=900/Math.max(w,h);w=Math.round(w*k);h=Math.round(h*k);
-  const date=it&&S.dateSrc==='capture'?it.date:new Date();
-  const out=composeOn(src,w,h,makeLayer(w,h,date));
-  const pc=$('#setPv');pc.width=out.width;pc.height=out.height;pc.getContext('2d').drawImage(out,0,0);
-}
-function openSettings(ret){setReturn=ret||null;syncSettings();$('#settings').classList.remove('hidden');drawPreview();}
-function closeSettings(){$('#settings').classList.add('hidden');const r=setReturn;setReturn=null;if(r)openShare(r);}
-$('#setBtn').onclick=()=>openSettings();
+$('#folderList').addEventListener('click',async e=>{
+  const b=e.target.closest('[data-rm]');if(!b)return;
+  dirs.splice(+b.dataset.rm,1);await idb.set('dirs',dirs);syncSettings();
+  if(dirs.length)scanAll();else{items=[];rebuild();closeSettings();showPerm(false);}
+});
+function openSettings(){syncSettings();updateInstallUI();$('#settings').classList.remove('hidden');history.pushState({s:1},'');}
+function closeSettings(){if($('#settings').classList.contains('hidden'))return;$('#settings').classList.add('hidden');history.back();}
+$('#setBtn').onclick=openSettings;
 $('#setClose').onclick=closeSettings;
 $('#settings').addEventListener('click',e=>{if(e.target.id==='settings')closeSettings();});
-$('#resetSet').onclick=()=>{S=Object.assign({},DEF);saveS();syncSettings();drawPreview();render();toast('تمت استعادة الإعدادات');};
-$('#clearLib').onclick=()=>{items.forEach(i=>{i.url&&URL.revokeObjectURL(i.url);i.thumb&&URL.revokeObjectURL(i.thumb);});items=[];rebuild();dayList=[];syncSettings();render();closeSettings();toast('تم مسح القائمة (لم تُحذف أي صورة من جهازك)');};
+$('#addFolder').onclick=pickFolder;
+$('#resetSet').onclick=()=>{S=Object.assign({},DEF);saveS();syncSettings();render();toast('تمت استعادة الإعدادات');};
 
-/* ---------- install & offline ---------- */
+/* ---------- install ---------- */
 const isStandalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 let deferredPrompt=null;
 function updateInstallUI(){
   const inst=isStandalone();
-  $('#instBtn').classList.toggle('hidden',inst||!deferredPrompt);
-  $('#instField').classList.toggle('hidden',inst||(!deferredPrompt&&!isIOS));
-  $('#instBtn2').classList.toggle('hidden',!deferredPrompt);
-  $('#iosHint').classList.toggle('hidden',inst||!isIOS);
-  if(inst){$('#instLabel').textContent='التطبيق مثبت على الجهاز';}
+  $('#btnInstall').classList.toggle('hidden',!deferredPrompt);
+  $('#iosSteps').classList.toggle('hidden',!(isIOS&&!deferredPrompt));
+  $('#menuSteps').classList.toggle('hidden',!!deferredPrompt||isIOS);
+  $('#instField').classList.toggle('hidden',inst||!deferredPrompt);
 }
 addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;updateInstallUI();});
-addEventListener('appinstalled',()=>{deferredPrompt=null;updateInstallUI();toast('تم تثبيت التطبيق على الشاشة الرئيسية');});
+addEventListener('appinstalled',()=>{deferredPrompt=null;flag('otd-installed','1');updateInstallUI();if(!$('#scrInstall').classList.contains('hidden'))show('installed');});
 async function doInstall(){
-  if(!deferredPrompt){if(isIOS)openSettings();return;}
-  deferredPrompt.prompt();try{await deferredPrompt.userChoice;}catch(e){}deferredPrompt=null;updateInstallUI();
+  if(!deferredPrompt)return;
+  deferredPrompt.prompt();let ok=false;try{ok=(await deferredPrompt.userChoice).outcome==='accepted';}catch(e){}
+  deferredPrompt=null;updateInstallUI();if(ok){flag('otd-installed','1');show('installed');}
 }
-$('#instBtn').onclick=doInstall;$('#instBtn2').onclick=doInstall;
-function setOffState(t){const el=$('#offState');if(el)el.textContent=t;}
-if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
-  addEventListener('load',()=>{
-    navigator.serviceWorker.register('./sw.js').then(reg=>{
-      setOffState(navigator.serviceWorker.controller?'جاهز ✓':'يتم التجهيز…');
-      navigator.serviceWorker.ready.then(()=>setOffState('جاهز ✓'));
-    }).catch(()=>setOffState('غير متاح في هذا المتصفح'));
-  });
-}else setOffState('يعمل بعد رفعه على الموقع');
+$('#btnInstall').onclick=doInstall;$('#instBtn2').onclick=doInstall;
+$('#btnSkipInstall').onclick=()=>{flag('otd-skip-install','1');start(true);};
+$('#btnContinueHere').onclick=()=>{flag('otd-skip-install','1');start(true);};
+
+/* ---------- permission ---------- */
+function showPerm(resume){
+  $('#permTitle').textContent=resume?'متابعة عرض ذكرياتك':'الوصول إلى صورك';
+  $('#permText').textContent=resume?'اضغط «سماح» ليتمكن التطبيق من قراءة مجلدات الصور التي اخترتها.':'اسمح للتطبيق بقراءة مجلد الكاميرا لعرض ذكرياتك. تُقرأ الصور من مكانها ولا تُنسخ أو تُرفع.';
+  $('#btnOtherFolder').classList.toggle('hidden',!resume);
+  $('#btnAllow').onclick=resume?resumeAccess:pickFolder;
+  show('perm');
+}
+async function resumeAccess(){
+  const ok=[];
+  for(const d of dirs){try{let p=await d.queryPermission({mode:'read'});if(p!=='granted')p=await d.requestPermission({mode:'read'});if(p==='granted')ok.push(d);}catch(e){}}
+  if(ok.length){dirs=ok;scanAll();}else pickFolder();
+}
+$('#btnOtherFolder').onclick=async()=>{dirs=[];await idb.set('dirs',[]);pickFolder();};
 
 /* ---------- start ---------- */
-buildSettings();render();checkSavedDir();updateInstallUI();
+async function start(skipInstallCheck){
+  if(FS){
+    dirs=((await idb.get('dirs'))||[]).filter(Boolean);
+    if(dirs.length){
+      let all=true;for(const d of dirs){try{if(await d.queryPermission({mode:'read'})!=='granted')all=false;}catch(e){all=false;}}
+      if(all){scanAll();return;}
+      showPerm(true);return;
+    }
+  }
+  if(!skipInstallCheck&&!isStandalone()&&!flag('otd-skip-install')){
+    if(flag('otd-installed')){show('installed');return;}
+    updateInstallUI();show('install');return;
+  }
+  showPerm(false);
+}
+function setOffState(t){const el=$('#offState');if(el)el.textContent=t;}
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){
+  addEventListener('load',()=>{navigator.serviceWorker.register('./sw.js').then(()=>{
+    setOffState(navigator.serviceWorker.controller?'جاهز ✓':'يتم التجهيز…');navigator.serviceWorker.ready.then(()=>setOffState('جاهز ✓'));
+  }).catch(()=>setOffState('غير متاح'));});
+}else setOffState('غير متاح');
+buildSettings();start(false);
 </script>
 </body>
 </html>
